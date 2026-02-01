@@ -1,207 +1,213 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grafismo Fonético - Veja como é fácil ensinar seu filho(a) a ler</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Grafismo Fonético - Veja como é fácil ensinar seu filho(a) a ler
+    </title>
 
     <!-- Ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
 
-        body {
-            background-color: #111;
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+      body {
+        background-color: #111;
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-        .container {
-            width: 100%;
-            max-width: 1100px;
-            padding: 20px;
-            text-align: center;
-        }
+      .container {
+        width: 100%;
+        max-width: 1100px;
+        padding: 20px;
+        text-align: center;
+      }
 
+      .main-title {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 30px;
+        line-height: 1.2;
+      }
+
+      .highlight {
+        color: #e06b2d; /* laranja queimado */
+        text-shadow: 0 0 12px rgba(224, 107, 45, 0.4);
+      }
+
+      .video-container {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto 35px;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+      }
+
+      .video-container iframe {
+        width: 100%;
+        height: 500px;
+        border: none;
+        display: block;
+      }
+
+      .button-container {
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .continue-btn {
+        padding: 18px 48px;
+        background: linear-gradient(135deg, #e06b2d, #c8541f);
+        color: #fff;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.3rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        box-shadow: 0 10px 30px rgba(224, 107, 45, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(25px);
+        transition: all 0.4s ease;
+      }
+
+      .continue-btn.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        animation: pulse 2s infinite;
+      }
+
+      .continue-btn:hover {
+        animation: none;
+        transform: translateY(-4px);
+        box-shadow: 0 15px 35px rgba(224, 107, 45, 0.7);
+      }
+
+      .timer-text {
+        margin-top: 15px;
+        font-size: 1rem;
+        color: #ccc;
+      }
+
+      .countdown {
+        color: #e06b2d;
+        font-weight: bold;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(224, 107, 45, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 12px rgba(224, 107, 45, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(224, 107, 45, 0);
+        }
+      }
+
+      /* Responsivo */
+      @media (max-width: 900px) {
         .main-title {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 30px;
-            line-height: 1.2;
-        }
-
-        .highlight {
-            color: #e06b2d; /* laranja queimado */
-            text-shadow: 0 0 12px rgba(224, 107, 45, 0.4);
-        }
-
-        .video-container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto 35px;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+          font-size: 2.3rem;
         }
 
         .video-container iframe {
-            width: 100%;
-            height: 500px;
-            border: none;
-            display: block;
+          height: 380px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .main-title {
+          font-size: 1.9rem;
         }
 
-        .button-container {
-            height: 80px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .video-container iframe {
+          height: 240px;
         }
 
         .continue-btn {
-            padding: 18px 48px;
-            background: linear-gradient(135deg, #e06b2d, #c8541f);
-            color: #fff;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 0 10px 30px rgba(224, 107, 45, 0.5);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(25px);
-            transition: all 0.4s ease;
+          padding: 15px 38px;
+          font-size: 1.1rem;
         }
-
-        .continue-btn.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-            animation: pulse 2s infinite;
-        }
-
-        .continue-btn:hover {
-            animation: none;
-            transform: translateY(-4px);
-            box-shadow: 0 15px 35px rgba(224, 107, 45, 0.7);
-        }
-
-        .timer-text {
-            margin-top: 15px;
-            font-size: 1rem;
-            color: #ccc;
-        }
-
-        .countdown {
-            color: #e06b2d;
-            font-weight: bold;
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(224, 107, 45, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 12px rgba(224, 107, 45, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(224, 107, 45, 0);
-            }
-        }
-
-        /* Responsivo */
-        @media (max-width: 900px) {
-            .main-title {
-                font-size: 2.3rem;
-            }
-
-            .video-container iframe {
-                height: 380px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .main-title {
-                font-size: 1.9rem;
-            }
-
-            .video-container iframe {
-                height: 240px;
-            }
-
-            .continue-btn {
-                padding: 15px 38px;
-                font-size: 1.1rem;
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
-<div class="container">
-    <h1 class="main-title">
+  <body>
+    <div class="container">
+      <h1 class="main-title">
         Veja como é fácil ensinar seu filho(a) a ler com o
         <span class="highlight">Grafismo Fonético</span>
-    </h1>
+      </h1>
 
-    <div class="video-container">
-        <iframe 
-            src="https://player-vz-7b7dee23-423.tv.pandavideo.com.br/embed/?v=a5de7d5e-be66-4acf-a9e4-937043e0f796"
-            allow="autoplay; encrypted-media; picture-in-picture"
-            allowfullscreen>
+      <div class="video-container">
+        <iframe
+          src="https://player-vz-7b7dee23-423.tv.pandavideo.com.br/embed/?v=a5de7d5e-be66-4acf-a9e4-937043e0f796"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen
+        >
         </iframe>
-    </div>
+      </div>
 
-    <div class="button-container">
+      <div class="button-container">
         <button class="continue-btn" id="continueBtn">
-            <span>Avançar</span>
-            <i class="fas fa-arrow-right"></i>
+          <span>Avançar</span>
+          <i class="fas fa-arrow-right"></i>
         </button>
+      </div>
+
+      <div class="timer-text" id="timerText">
+        Aguarde <span class="countdown" id="countdown">30</span> segundos para
+        continuar...
+      </div>
     </div>
 
-    <div class="timer-text" id="timerText">
-        Aguarde <span class="countdown" id="countdown">30</span> segundos para continuar...
-    </div>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const btn = document.getElementById('continueBtn');
-        const countdownEl = document.getElementById('countdown');
-        const timerText = document.getElementById('timerText');
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.getElementById("continueBtn");
+        const countdownEl = document.getElementById("countdown");
+        const timerText = document.getElementById("timerText");
 
         let time = 30;
 
         const timer = setInterval(() => {
-            time--;
-            countdownEl.textContent = time;
+          time--;
+          countdownEl.textContent = time;
 
-            if (time <= 0) {
-                clearInterval(timer);
-                btn.classList.add('active');
-                timerText.innerHTML = '<i class="fas fa-check-circle"></i> Você já pode avançar';
-            }
+          if (time <= 0) {
+            clearInterval(timer);
+            btn.classList.add("active");
+            timerText.innerHTML =
+              '<i class="fas fa-check-circle"></i> Você já pode avançar';
+          }
         }, 1000);
 
-        btn.addEventListener('click', () => {
-            window.location.href = "grafismofonetico/página.html";
+        btn.addEventListener("click", () => {
+          window.location.href = "grafismofonetico/página.html";
         });
-    });
-</script>
-
-</body>
+      });
+    </script>
+  </body>
 </html>
