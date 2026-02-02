@@ -7,8 +7,6 @@
       Grafismo Fonético - Veja como é fácil ensinar seu filho(a) a ler
     </title>
 
-
-    
     <!-- Ícones -->
     <link
       rel="stylesheet"
@@ -81,6 +79,25 @@
         z-index: -1;
       }
 
+      .countdown-container {
+        margin: 20px 0 25px 0;
+        padding: 10px;
+      }
+
+      .timer-text {
+        font-size: 1.2rem;
+        color: #ccc;
+        margin-bottom: 5px;
+      }
+
+      .countdown {
+        color: #e06b2d;
+        font-weight: bold;
+        font-size: 2rem;
+        display: inline-block;
+        min-width: 60px;
+      }
+
       .button-container {
         height: 80px;
         display: flex;
@@ -120,17 +137,6 @@
         box-shadow: 0 15px 35px rgba(39, 174, 96, 0.7);
       }
 
-      .timer-text {
-        margin-top: 15px;
-        font-size: 1rem;
-        color: #ccc;
-      }
-
-      .countdown {
-        color: #e06b2d;
-        font-weight: bold;
-      }
-
       @keyframes pulse {
         0% {
           box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.7);
@@ -156,6 +162,14 @@
         .video-container iframe {
           height: 620px;
         }
+        
+        .timer-text {
+          font-size: 1.1rem;
+        }
+        
+        .countdown {
+          font-size: 1.8rem;
+        }
       }
 
       @media (max-width: 600px) {
@@ -175,6 +189,15 @@
           padding: 15px 38px;
           font-size: 1.1rem;
         }
+        
+        .timer-text {
+          font-size: 1rem;
+        }
+        
+        .countdown {
+          font-size: 1.6rem;
+          min-width: 50px;
+        }
       }
 
       @media (max-width: 400px) {
@@ -184,6 +207,14 @@
 
         .video-container iframe {
           height: 445px;
+        }
+        
+        .timer-text {
+          font-size: 0.95rem;
+        }
+        
+        .countdown {
+          font-size: 1.5rem;
         }
       }
     </style>
@@ -205,16 +236,17 @@
         </iframe>
       </div>
 
+      <div class="countdown-container">
+        <div class="timer-text">
+          Aguarde <span class="countdown" id="countdown">30</span> segundos para continuar...
+        </div>
+      </div>
+
       <div class="button-container">
         <button class="continue-btn" id="continueBtn">
           <span>Avançar</span>
           <i class="fas fa-arrow-right"></i>
         </button>
-      </div>
-
-      <div class="timer-text" id="timerText">
-        Aguarde <span class="countdown" id="countdown">30</span> segundos para
-        continuar...
       </div>
     </div>
 
@@ -222,7 +254,6 @@
       document.addEventListener("DOMContentLoaded", () => {
         const btn = document.getElementById("continueBtn");
         const countdownEl = document.getElementById("countdown");
-        const timerText = document.getElementById("timerText");
 
         let time = 30;
 
@@ -233,8 +264,8 @@
           if (time <= 0) {
             clearInterval(timer);
             btn.classList.add("active");
-            timerText.innerHTML =
-              '<i class="fas fa-check-circle"></i> Você já pode avançar';
+            countdownEl.parentElement.innerHTML =
+              '<i class="fas fa-check-circle" style="color:#27ae60;"></i> Você já pode avançar';
           }
         }, 1000);
 
