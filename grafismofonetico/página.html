@@ -24,8 +24,11 @@
     </noscript>
     <!-- End Meta Pixel Code -->
 <script>
-  fbq('track', 'ViewContent');
+  window.addEventListener('load', function() {
+    fbq('track', 'ViewContent');
+  });
 </script>
+
 
 
 <meta name='robots' content='max-image-preview:large' />
